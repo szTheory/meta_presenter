@@ -20,6 +20,16 @@ Or install it yourself as:
 
     $ gem install presenting
 
+Include Presenting in your controller or mailer:
+
+    class ApplicationController < ActionController::Base
+      including Presenting
+    end
+
+    class ApplicationMailer < ActionMailer::Base
+      including Presenting
+    end
+
 ## Usage Example
 
 Say you have a PagesController with an action for home and logs. Underneath `app/presenters` you can add a class for each action. In this example we'll also create an application and base presenter we'll inherit from to re-use code in the per-action presenters.
@@ -121,6 +131,18 @@ app/presenters/pages/logs_presenter.rb
       def log_text(log)
         log.description
       end
+    end
+
+## Aliasing the presenter methods
+
+If you want to customize the `presenter` and `layout_presenter` methods you can specify a shorthand by adding an alias_method to your controller or mailer:
+
+    class ApplicationController < ActionController::Base
+      including Presenting
+
+      # So convenient!
+      alias_method :presenter, :p
+      alias_method :presenter, :lp
     end
 
 ## Contributing
