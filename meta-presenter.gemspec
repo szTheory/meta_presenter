@@ -1,15 +1,15 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = 'presenting'
+  spec.name          = 'meta-presenter'
   spec.version       = '0.1.0'
   spec.authors       = ['szTheory']
   spec.description   = %q{Presenter pattern in your Rails controllers and actions}
-  spec.summary       = %q{Presenting is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into small, tight, classes that are easily testable. There's even a DSL for method delegation on objects to reduce boilerplate.}
-  spec.homepage      = 'https://github.com/szTheory/presenting'
+  spec.summary       = %q{MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into small, tight, classes that are easily testable. There's even a DSL for method delegation on objects to reduce boilerplate.}
+  spec.homepage      = 'https://github.com/szTheory/meta-presenter'
   spec.license       = 'MIT'
   spec.metadata = {
-    "source_code_uri"   => "https://github.com/szTheory/presenting",
+    "source_code_uri"   => "https://github.com/szTheory/meta-presenter",
   }
 
   spec.files         = `git ls-files`.split($/)

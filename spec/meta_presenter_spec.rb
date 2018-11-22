@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Presenting do
+describe MetaPresenter do
   
 end
