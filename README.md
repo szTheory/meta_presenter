@@ -145,8 +145,8 @@ If you want to customize the `presenter` and `layout_presenter` methods you can 
       including MetaPresenter
 
       # So convenient!
-      alias_method :presenter, :p
-      alias_method :presenter, :lp
+      alias_method :presenter, :pr
+      alias_method :layout_presenter, :lpr
     end
 
 ## Contributing
