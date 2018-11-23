@@ -20,8 +20,6 @@ Or install it yourself as:
 
     $ gem install meta_presenter
 
-TODO: add an optional task that generates the scaffolding for you. Or, you can manually create the files you want.
-
 Include MetaPresenter::Helpers in your controller or mailer:
 
     class ApplicationController < ActionController::Base
@@ -150,6 +148,7 @@ If you want to customize the `presenter` method you can specify a shorthand by a
 
 * add support by lower Ruby versions by replacing yield_self with equivalent compatible code
 * tests for ActionMailer support
+* add an optional task that generates the scaffolding for you. Or, you can manually create the files you want
 
 ## Contributing
 
