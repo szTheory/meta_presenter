@@ -54,7 +54,6 @@ module MetaPresenter
           presenter_file_path = File.join(Rails.root, "app", "presenters", filename)
           if File.exists?(presenter_file_path)
             raise FileExistsButPresenterNotDefinedError.new(presenter_class_name, presenter_file_path)
-            # raise e
           else
             false
           end
