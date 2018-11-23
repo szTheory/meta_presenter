@@ -146,6 +146,11 @@ If you want to customize the `presenter` method you can specify a shorthand by a
       alias_method :presenter, :pr
     end
 
+## TODO
+
+* add support by lower Ruby versions by replacing yield_self with equivalent compatible code
+* tests for ActionMailer support
+
 ## Contributing
 
 1. Fork it

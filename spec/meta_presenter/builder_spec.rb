@@ -24,8 +24,6 @@ describe MetaPresenter::Builder do
       expect(controller_ancestors.first).to eql(controller_class)
     end
 
-    # TODO: test mailer scenarios
-
     context "application controller" do
       let(:controller_class) { ApplicationController }
 
