@@ -25,11 +25,11 @@ TODO: add an optional task that generates the scaffolding for you. Or, you can m
 Include MetaPresenter::Helpers in your controller or mailer:
 
     class ApplicationController < ActionController::Base
-      include MetaPresenter::Helpers
+      include MetaPresenter::Base
     end
 
     class ApplicationMailer < ActionMailer::Base
-      include MetaPresenter::Helpers
+      include MetaPresenter::Base
     end
 
 ## Usage Example
