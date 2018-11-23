@@ -18,7 +18,6 @@ module MetaPresenter
 
     def presenter_class
       # Try to find the class (it's not guaranteed)
-      # binding.pry
       klass_name = ancestors.find do |klass_name|
         presenter_class_for(klass_name)
       end
