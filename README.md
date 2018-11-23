@@ -2,7 +2,7 @@
 
 # MetaPresenter
 
-MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into small, tight, classes that are easily testable. There's even a DSL for method delegation on objects to reduce boilerplate.
+MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
 
 [Github Project Page](https://github.com/szTheory/meta_presenter)
 
