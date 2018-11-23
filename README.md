@@ -106,9 +106,9 @@ app/presenters/pages/base_presenter.rb:
 app/presenters/pages/home_presenter.rb
 
     class Pages::HomePresenter << Pages::BasePresenter
-      # presenter.email, presenter.id
-      # or any other method not already defined
-      # will delegate to the current_user
+      # presenter.email, presenter.id or any other
+      # method not already defined will delegate to
+      # the current_user
       delegate_all_to :current_user
 
       # presenter.greeting in views
@@ -121,7 +121,7 @@ app/presenters/pages/logs_presenter.rb
 
     class Pages::LogsPresenter << Pages::BasePresenter
       # presenter.size and presenter.last will delegate to 
-      # the controller's private #logs method
+      # the controller's private `#logs`
       delegate :size, :last, to: :logs
 
       # presenter.log_text(log) in view
