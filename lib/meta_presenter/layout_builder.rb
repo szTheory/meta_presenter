@@ -1,3 +1,5 @@
+require 'meta_presenter'
+
 class MetaPresenter::LayoutBuilder
   class NoLayoutImplemented < NotImplementedError
     def initialize(current_layout, layouts)

@@ -1,3 +1,5 @@
+require 'meta_presenter'
+
 class MetaPresenter::Builder
   attr_reader :controller, :action_name
   def initialize(controller, action_name)
@@ -6,10 +8,13 @@ class MetaPresenter::Builder
   end
 
   def presenter_class
+    puts "presenter_class()"
     # Try to find the class (it's not guaranteed)
     klass_name = ancestors.find do |klass_name|
       presenter_class_for(klass_name)
     end
+    puts "ancestors: #{ancestors}"
+    puts "klass_name (in presenter_class): #{klass_name}"
 
     # Return the actual class
     presenter_class_for(klass_name)
@@ -33,18 +38,28 @@ class MetaPresenter::Builder
     end
   
     def presenter_class_for(klass_name)
+      puts "------"
+      puts "presenter_class_for(klass_name), klass_name: #{klass_name}"
       presenter_class_name = "::#{klass_name}Presenter"
+      puts "presenter_class_name: #{presenter_class_name}"
       begin
         presenter_class_name.constantize
 
       # No corresponding presenter class was found
       rescue NameError => e
-        presenter_file_path = Rails.root.join("app", "presenters", "#{presenter_class_name.underscore}.rb")
+        puts "NameError..."
+        puts "Rails.root: #{Rails.root}"
+        filename = "#{presenter_class_name.underscore}.rb"
+        puts "filename: #{filename}"
+        presenter_file_path = File.join(Rails.root, "app", "presenters", filename)
+        puts "presenter_file_path: #{presenter_file_path}"
         if File.exists?(presenter_file_path)
+          puts "File.exists?(presenter_file_path) !!!!!!!!!!!!!!!!!"
           # If the file exists, but the class isn't defined then something
           # has gone wrong that the dev really should know about!
           raise e
         else
+          puts "* *  * *  * * * **  false"
           false
         end
       end

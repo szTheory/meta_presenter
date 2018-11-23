@@ -17,9 +17,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'actionpack', '>= 3.0'
-  spec.add_runtime_dependency 'actionmailer', '>= 3.0'
-  spec.add_runtime_dependency 'activerecord', '>= 3.0'
+  # spec.add_runtime_dependency 'actionpack', '>= 3.0'
+  # spec.add_runtime_dependency 'actionmailer', '>= 3.0'
+  # spec.add_runtime_dependency 'activerecord', '>= 3.0'
+  spec.add_runtime_dependency 'rails', '>= 3.0'
+
 
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'database_cleaner'
