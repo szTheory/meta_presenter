@@ -1,16 +1,16 @@
-[![Gem Version](https://badge.fury.io/rb/meta-presenter.svg)](https://badge.fury.io/rb/meta-presenter) [![Build Status](https://travis-ci.org/sztheory/meta-presenter.svg?branch=master)](https://travis-ci.org/sztheory/meta-presenter) [![Coverage Status](https://coveralls.io/repos/github/sztheory/meta-presenter/badge.svg?branch=master)](https://coveralls.io/github/sztheory/meta-presenter?branch=master) [![Inline docs](http://inch-ci.org/github/sztheory/meta-presenter.svg?branch=master)](http://inch-ci.org/github/sztheory/meta-presenter) [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sztheory/meta-presenter/blob/master/LICENSE.txt) [![Gem](https://img.shields.io/gem/dt/meta-presenter.svg)](https://rubygems.org/gems/meta-presenter) [![GitHub stars](https://img.shields.io/github/stars/sztheory/meta-presenter.svg?label=Stars&style=social)](https://github.com/sztheory/meta-presenter)
+[![Gem Version](https://badge.fury.io/rb/meta_presenter.svg)](https://badge.fury.io/rb/meta_presenter) [![Build Status](https://travis-ci.org/sztheory/meta_presenter.svg?branch=master)](https://travis-ci.org/sztheory/meta_presenter) [![Coverage Status](https://coveralls.io/repos/github/sztheory/meta_presenter/badge.svg?branch=master)](https://coveralls.io/github/sztheory/meta_presenter?branch=master) [![Inline docs](http://inch-ci.org/github/sztheory/meta_presenter.svg?branch=master)](http://inch-ci.org/github/sztheory/meta_presenter) [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sztheory/meta_presenter/blob/master/LICENSE.txt) [![Gem](https://img.shields.io/gem/dt/meta_presenter.svg)](https://rubygems.org/gems/meta_presenter) [![GitHub stars](https://img.shields.io/github/stars/sztheory/meta_presenter.svg?label=Stars&style=social)](https://github.com/sztheory/meta_presenter)
 
 # MetaPresenter
 
 MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into small, tight, classes that are easily testable. There's even a DSL for method delegation on objects to reduce boilerplate.
 
-[Github Project Page](https://github.com/szTheory/meta-presenter)
+[Github Project Page](https://github.com/szTheory/meta_presenter)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'meta-presenter'
+    gem 'meta_presenter'
 
 And then execute:
 
@@ -18,16 +18,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install meta-presenter
+    $ gem install meta_presenter
 
-Include MetaPresenter in your controller or mailer:
+TODO: add an optional task that generates the scaffolding for you. Or, you can manually create the files you want.
+
+Include MetaPresenter::Helpers in your controller or mailer:
 
     class ApplicationController < ActionController::Base
-      including MetaPresenter
+      include MetaPresenter::Helpers
     end
 
     class ApplicationMailer < ActionMailer::Base
-      including MetaPresenter
+      include MetaPresenter::Helpers
     end
 
 ## Usage Example
@@ -133,6 +135,8 @@ app/presenters/pages/logs_presenter.rb
       end
     end
 
+TODO: add more documentation around layout presenters
+
 ## Aliasing the presenter methods
 
 If you want to customize the `presenter` and `layout_presenter` methods you can specify a shorthand by adding an alias_method to your controller or mailer:
@@ -156,4 +160,4 @@ If you want to customize the `presenter` and `layout_presenter` methods you can 
 
 ## License
 
-See the [LICENSE](https://github.com/szTheory/meta-presenter/blob/master/LICENSE.txt) file.
+See the [LICENSE](https://github.com/szTheory/meta_presenter/blob/master/LICENSE.txt) file.
