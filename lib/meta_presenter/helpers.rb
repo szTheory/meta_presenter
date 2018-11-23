@@ -1,6 +1,7 @@
 require 'meta_presenter'
 require 'meta_presenter/builder'
 require 'meta_presenter/layout_builder'
+require "active_support/dependencies"
 
 module MetaPresenter::Helpers
   extend ActiveSupport::Concern
@@ -17,12 +18,7 @@ module MetaPresenter::Helpers
     def presenter
       @presenter ||= begin
         yield_self do |controller|
-          puts "MetaPresenter::Builder: #{MetaPresenter::Builder}"
-          puts "controller: #{controller}"
-          puts "action_name: #{action_name}"
-          # puts "MetaPresenter::Builder.new(controller, action_name): #{MetaPresenter::Builder.new(controller, action_name).inspect}"
           klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
-          puts "klass: #{klass}"
           klass.new(controller)
         end
       end
