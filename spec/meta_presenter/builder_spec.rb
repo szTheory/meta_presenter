@@ -24,22 +24,19 @@ describe MetaPresenter::Builder do
       expect(controller_ancestors.first).to eql(controller_class)
     end
 
+    # TODO: test mailer scenarios
+
     context "application controller" do
       let(:controller_class) { ApplicationController }
 
       it { is_expected.to be ApplicationPresenter }
-
-      # TODO: test action variations
     end
 
     context "subclass of ApplicationController" do
       let(:controller_class) { PagesController }
+      let(:action_name) { "logs" }
 
-      context "action with a presenter class defined" do
-        let(:action_name) { "logs" }
-
-        it { is_expected.to be Pages::LogsPresenter }
-      end
+      it { is_expected.to be Pages::LogsPresenter }
 
       context "action without a presenter class defined" do
         # Good luck finding that FairyPresenter, doesn't exist!
@@ -48,9 +45,22 @@ describe MetaPresenter::Builder do
         it "defers to the parent presenter" do
           expect(subject).to be PagesPresenter
         end
+
+        context "but the file exists" do
+          let(:action_name) { "only_file_exists" }
+
+          it do
+            expect { subject }.to raise_error(MetaPresenter::Builder::FileExistsButPresenterNotDefinedError)
+          end
+        end
       end
     end
 
-    # TODO: test namespaces with nested scenarios
+    context "namespaced" do
+      let(:controller_class) { Admin::DashboardController }
+      let(:action_name) { "inbox" }
+
+      it { is_expected.to be Admin::Dashboard::InboxPresenter }
+    end
   end
 end

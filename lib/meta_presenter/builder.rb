@@ -47,20 +47,16 @@ module MetaPresenter
       def presenter_class_for(klass_name)
         presenter_class_name = "::#{klass_name}Presenter"
         begin
-          puts "presenter_class_name: #{presenter_class_name}"
           presenter_class_name.constantize
 
         # No corresponding presenter class was found
         rescue NameError => e
           filename = "#{presenter_class_name.underscore}.rb"
-          puts "Rails.root: #{Rails.root}"
           presenter_file_path = File.join(Rails.root, "app", "presenters", filename)
-          puts "File exists? presenter_file_path: #{presenter_file_path}"
           if File.exists?(presenter_file_path)
             raise FileExistsButPresenterNotDefinedError.new(presenter_class_name, presenter_file_path)
             # raise e
           else
-            puts "false..."
             false
           end
         end
