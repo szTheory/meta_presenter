@@ -1,0 +1,2 @@
+class PagesPresenter < ApplicationPresenter
+end

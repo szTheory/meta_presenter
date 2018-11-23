@@ -2,23 +2,16 @@ require 'coveralls'
 Coveralls.wear!
 
 require "meta_presenter"
-require "database_cleaner"
-require "support/database_cleaner"
-require "support/application_controller"
+Dir["#{__dir__}/support/app/**/*.rb"].each {|file| require file }
 require "pry"
 
-# ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+unless defined?(Rails)
+  class Rails
+  end
+end
 
-# ActiveRecord::Schema.define do
-#   self.verbose = true
-
-#   create_table :users, force: true do |t|
-#     t.string :name
-#   end
-
-#   create_table :posts, force: true do |t|
-#     t.string :content
-#     t.integer :user_id
-#     t.timestamps
-#   end
-# end
+RSpec.configure do |config|
+  config.before do
+    allow(Rails).to receive(:root).and_return(File.join(__dir__, 'support'))
+  end
+end

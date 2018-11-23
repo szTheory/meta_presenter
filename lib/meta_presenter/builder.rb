@@ -1,3 +1,5 @@
+require 'active_support/core_ext/object/try'
+
 module MetaPresenter
   class Builder
     attr_reader :controller, :action_name
@@ -6,8 +8,17 @@ module MetaPresenter
       @action_name = action_name
     end
 
+    # If the file exists, but the class isn't defined then something
+    # has gone wrong that the dev really should know about!
+    class FileExistsButPresenterNotDefinedError < NameError
+      def initialize(presenter_class_name, presenter_file_path)
+        super("Presenter class #{presenter_class_name} is not defined but file exists at #{presenter_file_path}")
+      end
+    end
+
     def presenter_class
       # Try to find the class (it's not guaranteed)
+      # binding.pry
       klass_name = ancestors.find do |klass_name|
         presenter_class_for(klass_name)
       end
@@ -36,17 +47,20 @@ module MetaPresenter
       def presenter_class_for(klass_name)
         presenter_class_name = "::#{klass_name}Presenter"
         begin
+          puts "presenter_class_name: #{presenter_class_name}"
           presenter_class_name.constantize
 
         # No corresponding presenter class was found
         rescue NameError => e
           filename = "#{presenter_class_name.underscore}.rb"
+          puts "Rails.root: #{Rails.root}"
           presenter_file_path = File.join(Rails.root, "app", "presenters", filename)
+          puts "File exists? presenter_file_path: #{presenter_file_path}"
           if File.exists?(presenter_file_path)
-            # If the file exists, but the class isn't defined then something
-            # has gone wrong that the dev really should know about!
-            raise e
+            raise FileExistsButPresenterNotDefinedError.new(presenter_class_name, presenter_file_path)
+            # raise e
           else
+            puts "false..."
             false
           end
         end
@@ -56,7 +70,7 @@ module MetaPresenter
         all_ancestors.yield_self do |list|
           # Different ancestors depending on whether
           # we're dealing with a mailer or a controller
-          if list.include?(ActionMailer::Base)
+          if list.map(&:to_s).include?("ActionMailer::Base")
             mailer_ancestors
           else
             controller_ancestors
