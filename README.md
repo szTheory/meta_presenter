@@ -135,18 +135,15 @@ app/presenters/pages/logs_presenter.rb
       end
     end
 
-TODO: add more documentation around layout presenters
-
 ## Aliasing the presenter methods
 
-If you want to customize the `presenter` and `layout_presenter` methods you can specify a shorthand by adding an alias_method to your controller or mailer:
+If you want to customize the `presenter` method you can specify a shorthand by adding an alias_method to your controller or mailer:
 
     class ApplicationController < ActionController::Base
       including MetaPresenter
 
       # So convenient!
       alias_method :presenter, :pr
-      alias_method :layout_presenter, :lpr
     end
 
 ## Contributing

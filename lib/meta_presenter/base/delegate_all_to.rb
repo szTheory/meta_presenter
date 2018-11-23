@@ -1,4 +1,5 @@
 require 'active_support/concern'
+require 'active_support/core_ext/class/attribute'
 
 module MetaPresenter
   class Base
