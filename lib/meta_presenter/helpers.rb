@@ -1,4 +1,3 @@
-require 'meta_presenter'
 require 'meta_presenter/builder'
 require 'meta_presenter/layout_builder'
 require 'active_support/concern'

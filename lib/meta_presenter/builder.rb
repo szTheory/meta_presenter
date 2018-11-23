@@ -1,5 +1,3 @@
-require 'meta_presenter'
-
 module MetaPresenter
   class Builder
     attr_reader :controller, :action_name

@@ -1,5 +1,3 @@
-require 'meta_presenter'
-
 module MetaPresenter
   class LayoutBuilder
     class NoLayoutImplemented < NotImplementedError
