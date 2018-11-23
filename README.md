@@ -149,6 +149,7 @@ If you want to customize the `presenter` method you can specify a shorthand by a
 * add support by lower Ruby versions by replacing yield_self with equivalent compatible code
 * tests for ActionMailer support
 * add an optional task that generates the scaffolding for you. Or, you can manually create the files you want
+* add support for layouts
 
 ## Contributing
 
