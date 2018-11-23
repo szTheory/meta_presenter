@@ -19,7 +19,7 @@ begin
   Dir["#{__dir__}/support/app/**/*.rb"].each {|file| require file }
 
   # mock Rails
-  class Rails
+  module Rails
   end
 
   # stub Rails.root
