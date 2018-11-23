@@ -32,7 +32,7 @@ Include MetaPresenter::Helpers in your controller or mailer:
       include MetaPresenter::Base
     end
 
-## Usage Example
+## Example
 
 Say you have a PagesController with an action for home and logs. Underneath `app/presenters` you can add a class for each action. In this example we'll also create an application and base presenter we'll inherit from to re-use code in the per-action presenters.
 
