@@ -32,13 +32,17 @@ describe MetaPresenter::Builder do
 
     context "subclass of ApplicationController" do
       let(:controller_class) { PagesController }
-      let(:action_name) { "logs" }
 
-      it { is_expected.to be Pages::LogsPresenter }
+      context "action with a presenter class defined" do
+        let(:action_name) { "logs" }
+        before { expect(Object).to_not be_const_defined('LogsPresenter') }
+
+        it { is_expected.to be Pages::LogsPresenter }
+      end
 
       context "action without a presenter class defined" do
-        # Good luck finding that FairyPresenter, doesn't exist!
         let(:action_name) { "fairy" }
+        before { expect(Object).to_not be_const_defined('FairyPresenter') }
 
         it "defers to the parent presenter" do
           expect(subject).to be PagesPresenter
