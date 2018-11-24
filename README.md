@@ -7,7 +7,7 @@ MetaPresenter is a Ruby gem that gives you access to the powerful presenter patt
 ## Links
 
 * [Github Project Page](https://github.com/szTheory/meta_presenter)
-* [RDocs for the master branch can be found here.](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
+* [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
 
 ## Installation
 
