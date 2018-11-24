@@ -146,7 +146,7 @@ If you want to customize the `presenter` method you can specify a shorthand by a
 
 ## TODO
 
-* add support by lower Ruby versions by replacing yield_self with equivalent compatible code
+* add support for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
 * tests for ActionMailer support
 * add an optional task that generates the scaffolding for you. Or, you can manually create the files you want
 * add support for layouts

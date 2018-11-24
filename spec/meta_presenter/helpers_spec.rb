@@ -6,7 +6,7 @@ describe MetaPresenter::Helpers do
   let(:action_name) { 'logs' }
 
   describe '#presenter' do
-    subject { controller.helpers.presenter }
+    subject { controller.view_context.presenter }
 
     before do
       allow(controller).to receive(:action_name).and_return(action_name)

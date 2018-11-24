@@ -1,4 +1,14 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in meta_presenter.gemspec
 gemspec
+
+gem 'pry'
+
+# Hinting at development dependencies
+# Prevents bundler from taking a long-time to resolve
+group :development, :test do
+  gem 'rspec'
+  gem 'builder'
+  gem 'rb-readline'
+  gem 'coveralls'
+end
