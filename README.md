@@ -30,6 +30,10 @@ Include MetaPresenter::Helpers in your controller or mailer:
       include MetaPresenter::Base
     end
 
+## Documentation
+
+[RDocs for the master branch can be found here.](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
+
 ## Requirements
 
 MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
