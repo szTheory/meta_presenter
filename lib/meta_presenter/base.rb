@@ -18,7 +18,9 @@ module MetaPresenter
     # over default controller actions
     include DelegateAllTo
 
+    # Displayed in errors involving the presenter
     def inspect
+      # Concise to not dump too much information on the dev
       "#<#{self.class.name}>"
     end
   end

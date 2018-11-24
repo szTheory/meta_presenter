@@ -5,9 +5,16 @@ module MetaPresenter
   # Builds a presenter class for a controller and method
   class Builder
 
-    attr_reader :controller, :action_name
+    # Controller that this presenter will delegate methods to
+    attr_reader :controller
 
+    # Name of the controller's action to hook the presenter up to
+    attr_reader :action_name
+
+    # Creates a new Builder
+    #
     # @param [ActionController::Base, ActionMailer::Base] controller Controller that this presenter will delegate methods to
+    # @param [String] action_name Name of the controller's action to hook the presenter up to
     def initialize(controller, action_name)
       @controller = controller
       @action_name = action_name
