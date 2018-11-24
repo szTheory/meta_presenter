@@ -47,10 +47,15 @@ Say you have a PagesController with an action for home and logs. Underneath `app
         pages_controller.rb
       presenters/
         application_presenter.rb
+        pages_presenter.rb
         pages/
-          base_presenter.rb
           home_presenter.rb
           logs_presenter.rb
+      views
+        pages
+          home.html.erb
+          logs.html.erb
+
 
 app/controllers/page_controller.rb
 
@@ -95,9 +100,9 @@ app/presenters/application_presenter.rb
       end
     end
 
-app/presenters/pages/base_presenter.rb:
+app/presenters/pages_presenter.rb:
 
-    class Pages::BasePresenter < ApplicationPresenter
+    class PagesPresenter < ApplicationPresenter
       # Makes presenter.nav_items available for
       # all actions on PagesController
       def nav_items
@@ -110,7 +115,7 @@ app/presenters/pages/base_presenter.rb:
 
 app/presenters/pages/home_presenter.rb
 
-    class Pages::HomePresenter << Pages::BasePresenter
+    class Pages::HomePresenter << PagesPresenter
       # presenter.email, presenter.id or any other
       # method not already defined will delegate to
       # the current_user
@@ -124,7 +129,7 @@ app/presenters/pages/home_presenter.rb
 
 app/presenters/pages/logs_presenter.rb
 
-    class Pages::LogsPresenter << Pages::BasePresenter
+    class Pages::LogsPresenter << PagesPresenter
       # presenter.size and presenter.last will delegate to 
       # the controller's private `#logs`
       delegate :size, :last, to: :logs
@@ -139,6 +144,8 @@ app/presenters/pages/logs_presenter.rb
         log.description
       end
     end
+
+TODO: add view examples
 
 ## Aliasing the presenter methods
 
