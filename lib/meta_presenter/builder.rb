@@ -61,20 +61,18 @@ module MetaPresenter
       end
 
       def ancestors
-        all_ancestors.yield_self do |list|
-          # Different ancestors depending on whether
-          # we're dealing with a mailer or a controller
-          if list.map(&:to_s).include?("ActionMailer::Base")
-            mailer_ancestors
-          else
-            controller_ancestors
-          end
-        end.yield_self do |list|
-          # add a presenter class for our current action
-          # to the front of the list
-          presenter_class_name_for_current_action = "#{list.first}::#{action_name.camelcase}"
-          list.unshift(presenter_class_name_for_current_action)
+        # Different ancestors depending on whether
+        # we're dealing with a mailer or a controller
+        list = if all_ancestors.map(&:to_s).include?("ActionMailer::Base")
+          mailer_ancestors
+        else
+          controller_ancestors
         end
+
+        # add a presenter class for our current action
+        # to the front of the list
+        presenter_class_name_for_current_action = "#{list.first}::#{action_name.camelcase}"
+        list.unshift(presenter_class_name_for_current_action)
       end
 
       # The list of ancestors is very long.
