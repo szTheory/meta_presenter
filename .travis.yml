@@ -11,6 +11,6 @@ rvm:
   - 2.4.0
   - 2.5.0
 gemfile:
-  - gemfiles/actionpack_4.gemfile
-  - gemfiles/actionpack_5.gemfile
+  - gemfiles/actionpack4.gemfile
+  - gemfiles/actionpack5.gemfile
 script: bundle exec rspec
