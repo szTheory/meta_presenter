@@ -1,8 +1,13 @@
 require 'active_support/core_ext/object/try'
 
 module MetaPresenter
+
+  # Builds a presenter class for a controller and method
   class Builder
+
     attr_reader :controller, :action_name
+
+    # @param [ActionController::Base, ActionMailer::Base] controller Controller that this presenter will delegate methods to
     def initialize(controller, action_name)
       @controller = controller
       @action_name = action_name
@@ -19,6 +24,7 @@ module MetaPresenter
       end
     end
 
+    # @return [Class] the presenter class for our controller and action combination
     def presenter_class
       # Try to find the class (it's not guaranteed)
       klass_name = ancestors.find do |klass_name|

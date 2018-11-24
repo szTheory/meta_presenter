@@ -2,7 +2,6 @@ require 'active_support/concern'
 
 module MetaPresenter
   class Base
-    
     # Give the presenter the ability to delegate methods to
     # a controller (ActionController::Base or ActionMailer::Base)
     module DelegateToController

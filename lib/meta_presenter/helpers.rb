@@ -2,6 +2,19 @@ require 'meta_presenter/builder'
 require 'active_support/concern'
 
 module MetaPresenter
+
+  # Including this module in your controller will give
+  # your views access to a `presenter` method that
+  # delegates to controller methods
+  #
+  # class ApplicationController < ActionController::Base
+  #   include MetaPresenter::Base
+  # end
+  #
+  # class ApplicationMailer < ActionMailer::Base
+  #   include MetaPresenter::Base
+  # end
+  #
   module Helpers
     extend ActiveSupport::Concern
     included do
