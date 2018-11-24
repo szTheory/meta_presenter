@@ -14,10 +14,9 @@ module MetaPresenter
       # Initialize presenter with the current controller
       def presenter
         @presenter ||= begin
-          yield_self do |controller|
-            klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
-            klass.new(controller)
-          end
+          controller = self
+          klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
+          klass.new(controller)
         end
       end
   end
