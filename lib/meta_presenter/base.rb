@@ -6,12 +6,14 @@ module MetaPresenter
   # Base presenter class. Inherit from this it in order 
   # to get a presenter you can use in your views
   # 
-  # # app/presenters/application_presenter.rb 
-  # class ApplicationPresenter < MetaPresenter::Base
-  #   def message
-  #     "Hello"
+  # @example
+  #
+  #   # app/presenters/application_presenter.rb 
+  #   class ApplicationPresenter < MetaPresenter::Base
+  #     def message
+  #       "Hello"
+  #     end
   #   end
-  # end
   class Base
     include DelegateToController
     # Comes last so `delegate_all_to` takes priority 
@@ -19,6 +21,8 @@ module MetaPresenter
     include DelegateAllTo
 
     # Displayed in errors involving the presenter
+    # 
+    # @return [String] Brief description of this presenter as its class name
     def inspect
       # Concise to not dump too much information on the dev
       "#<#{self.class.name}>"

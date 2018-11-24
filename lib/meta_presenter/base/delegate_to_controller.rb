@@ -11,7 +11,7 @@ module MetaPresenter
       
       extend ActiveSupport::Concern
       included do
-        # Controller that this presenter will delegate methods to
+        # @return [ActionController::Base, ActionMailer::Base] Controller that this presenter will delegate methods to
         attr_reader :controller
 
         include InstanceMethods
@@ -22,6 +22,7 @@ module MetaPresenter
         # Creates a new presenter
         #
         # @param [ActionController::Base, ActionMailer::Base] controller Controller that this presenter will delegate methods to
+        # @return [MetaPresenter::Base] a base presenter
         def initialize(controller)
           @controller = controller
         end

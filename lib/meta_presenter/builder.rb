@@ -5,10 +5,10 @@ module MetaPresenter
   # Builds a presenter class for a controller and method
   class Builder
 
-    # Controller that this presenter will delegate methods to
+    # @return [ActionController::Base, ActionMailer::Base] Controller that this presenter will delegate methods to
     attr_reader :controller
 
-    # Name of the controller's action to hook the presenter up to
+    # @return [String] Name of the controller's action to hook the presenter up to
     attr_reader :action_name
 
     # Creates a new Builder
@@ -31,7 +31,7 @@ module MetaPresenter
       end
     end
 
-    # @return [Class] the presenter class for our controller and action combination
+    # @return [Class] Class constant for the built MetaPresenter::Base presenter
     def presenter_class
       # Try to find the class (it's not guaranteed)
       klass_name = ancestors.find do |klass_name|
