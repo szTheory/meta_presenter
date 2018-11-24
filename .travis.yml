@@ -13,4 +13,10 @@ rvm:
 gemfile:
   - gemfiles/actionpack4.gemfile
   - gemfiles/actionpack5.gemfile
+matrix:
+  exclude:
+    - rvm: 2.2.0
+      gemfile: gemfiles/actionpack5.gemfile
+    - rvm: 2.2.1
+      gemfile: gemfiles/actionpack5.gemfile
 script: bundle exec rspec
