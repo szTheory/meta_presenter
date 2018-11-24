@@ -2,20 +2,35 @@ require 'active_support/concern'
 
 module MetaPresenter
   class Base
+    
+    # Give the presenter the ability to delegate methods to
+    # a controller (ActionController::Base or ActionMailer::Base)
     module DelegateToController
+
+      # Presenters delegate to private controller methods by default
       INCLUDE_PRIVATE_METHODS = true
       
       extend ActiveSupport::Concern
       included do
+        # Controller that this presenter will delegate methods to
         attr_reader :controller
+
         include InstanceMethods
       end
 
-      module InstanceMethods
+      module InstanceMethods # :nodoc:
+
+        # Creates a new presenter
+        #
+        # @param [ActionController::Base, ActionMailer::Base] controller Controller that this presenter will delegate methods to
         def initialize(controller)
           @controller = controller
         end
 
+        # Check to see whether a method has been either
+        # defined by or is delegated by this presenter
+        #
+        # @param *args method name and the other arguments
         def respond_to_missing?(*args)
           method_name = args.first
           delegates_controller_method? || super

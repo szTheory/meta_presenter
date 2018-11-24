@@ -8,9 +8,12 @@ module MetaPresenter
       @action_name = action_name
     end
 
-    # If the file exists, but the class isn't defined then something
-    # has gone wrong that the dev really should know about!
+    # Error for there's no presenter class defined but a file for it exists
     class FileExistsButPresenterNotDefinedError < NameError
+      # Create a new error
+      #
+      # @param [String] presenter_class_name Class name of presenter
+      # @param [String] presenter_file_path File path where the presenter Ruby class was found at
       def initialize(presenter_class_name, presenter_file_path)
         super("Presenter class #{presenter_class_name} is not defined but file exists at #{presenter_file_path}")
       end

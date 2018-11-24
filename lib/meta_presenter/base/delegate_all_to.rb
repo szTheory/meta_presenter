@@ -3,15 +3,26 @@ require 'active_support/core_ext/class/attribute'
 
 module MetaPresenter
   class Base
+    # Give the presenter the ability to delegate methods to an object
     module DelegateAllTo
+
       extend ActiveSupport::Concern
       included do
+        # Name of an object that when specified will delegate to
+        # all incoming methods send to the presenter that
+        # we not already handled by the presenter otherwise
+        # (such as explicitly defining the method)
         class_attribute :delegate_all_to
-        attr_accessor :delegating
+
         include InstanceMethods
       end
 
-      module InstanceMethods
+      module InstanceMethods # :nodoc:
+
+        # Check to see whether a method has been either
+        # defined by or is delegated by this presenter
+        #
+        # @param *args method name and the other arguments
         def respond_to_missing?(*args)
           method_name = args.first
           delegate_all_responds_to?(method_name) || super
@@ -37,15 +48,15 @@ module MetaPresenter
             # Temporarily set a flag that we are delegating 
             # to an underlying method. this allows us
             # to chain additional methods calls onto the end
-            delegating = true
+            @delegating = true
             send(self.class.delegate_all_to)
           ensure
             # Cleanup the flag afterwards to close the door behind us
-            delegating = false
+            @delegating = false
           end
 
           def delegating_all_to?
-            delegating == true
+            @delegating == true
           end
 
           def delegate_all_to?
