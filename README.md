@@ -166,7 +166,7 @@ If you want to customize the `presenter` method you can specify a shorthand by a
     end
 
 ## TODO
-
+* add Middleman support
 * add support for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
 * tests for ActionMailer support
 * optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
