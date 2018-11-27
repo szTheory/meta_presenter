@@ -55,6 +55,13 @@ Say you have a PagesController with an action for home and logs. Underneath `app
         pages
           home.html.erb
           logs.html.erb
+    spec/ (or test/)
+      presenters/
+        application_presenter_spec.rb
+        pages_presenter_spec.rb
+        pages/
+          home_presenter_spec.rb
+          logs_presenter_spec.rb
 
 
 app/controllers/page_controller.rb
@@ -162,7 +169,7 @@ If you want to customize the `presenter` method you can specify a shorthand by a
 
 * add support for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
 * tests for ActionMailer support
-* add an optional task that generates the scaffolding for you. Or, you can manually create the files you want
+* optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
 * add support for layouts
 
 ## Contributing
