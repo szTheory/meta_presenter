@@ -155,6 +155,13 @@ class Pages::HomePresenter << PagesPresenter
 end
 ```
 
+app/views/pages/home.html.haml
+
+```Haml
+%h1 Home
+%p #{greeting}
+```
+
 app/presenters/pages/logs_presenter.rb
 
 ```ruby
@@ -164,18 +171,22 @@ class Pages::LogsPresenter << PagesPresenter
   delegate :size, :last, to: :logs
 
   # presenter.log_text(log) in view
-  # for example in a haml view:
-  # 
-  # - presenter.logs.each do |log|
-  #   = presenter.log_text(log)
-  #
   def log_text(log)
     log.description
   end
 end
 ```
 
-TODO: add view examples
+app/views/pages/logs.html.haml
+
+```Haml
+%h1 Logs
+%p= "Num logs: #{presenter.size}"
+%p= "Last log: #{presenter.log_text(presenter.last)}"
+%ul
+  - presenter.logs.each do |log|
+    %li= presenter.log_text(log)
+```
 
 ## Aliasing the presenter methods
 
