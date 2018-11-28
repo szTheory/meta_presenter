@@ -181,8 +181,8 @@ app/views/pages/logs.html.haml
 
 ```Haml
 %h1 Logs
-%p= "Num logs: #{presenter.size}"
-%p= "Last log: #{presenter.log_text(presenter.last)}"
+%p Num logs: #{presenter.size}
+%p Last log: #{presenter.log_text(presenter.last)}
 %ul
   - presenter.logs.each do |log|
     %li= presenter.log_text(log)
