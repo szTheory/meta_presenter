@@ -13,25 +13,35 @@ MetaPresenter is a Ruby gem that gives you access to the powerful presenter patt
 
 Add this line to your application's Gemfile:
 
-    gem 'meta_presenter'
+```ruby
+gem 'meta_presenter'
+```
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install meta_presenter
+```sh
+$ gem install meta_presenter
+```
 
 Include MetaPresenter::Helpers in your controller or mailer:
 
-    class ApplicationController < ActionController::Base
-      include MetaPresenter::Base
-    end
+```ruby
+class ApplicationController < ActionController::Base
+  include MetaPresenter::Base
+end
+```
 
-    class ApplicationMailer < ActionMailer::Base
-      include MetaPresenter::Base
-    end
+```ruby
+class ApplicationMailer < ActionMailer::Base
+  include MetaPresenter::Base
+end
+```
 
 ## Requirements
 
@@ -41,116 +51,129 @@ MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help 
 
 Say you have a PagesController with an action for home and logs. Underneath `app/presenters` you can add a class for each action. In this example we'll also create an application and base presenter we'll inherit from to re-use code in the per-action presenters.
 
-    app/
-      controllers/
-        application_controller.rb
-        pages_controller.rb
-      presenters/
-        application_presenter.rb
-        pages_presenter.rb
-        pages/
-          home_presenter.rb
-          logs_presenter.rb
-      views
-        pages
-          home.html.erb
-          logs.html.erb
-    spec/ (or test/)
-      presenters/
-        application_presenter_spec.rb
-        pages_presenter_spec.rb
-        pages/
-          home_presenter_spec.rb
-          logs_presenter_spec.rb
-
+```
+app/
+  controllers/
+    application_controller.rb
+    pages_controller.rb
+  presenters/
+    application_presenter.rb
+    pages_presenter.rb
+    pages/
+      home_presenter.rb
+      logs_presenter.rb
+  views
+    pages
+      home.html.erb
+      logs.html.erb
+spec/ (or test/)
+  presenters/
+    application_presenter_spec.rb
+    pages_presenter_spec.rb
+    pages/
+      home_presenter_spec.rb
+      logs_presenter_spec.rb
+```
 
 app/controllers/page_controller.rb
 
-    class ApplicationController < ActionController::Base
-      # Controller methods automatically become available in views and other presenters.
-      # So this gives you presenter.current_user in views, and you can call `current_user`
-      # within your presenters as well
-      def current_user
-        User.first
-      end
-    end
+```ruby
+class ApplicationController < ActionController::Base
+  # Controller methods automatically become available in views and other presenters.
+  # So this gives you presenter.current_user in views, and you can call `current_user`
+  # within your presenters as well
+  def current_user
+    User.first
+  end
+end
+```
 
 app/controllers/dashboard_controller.rb
 
-    class ApplicationController < ActionController::Base
-      def home
-      end
+```ruby
+class ApplicationController < ActionController::Base
+  def home
+  end
 
-      def logs
-      end
+  def logs
+  end
 
-      private
-        # presenter.logs in views
-        def logs
-          Log.all
-        end
+  private
+    # presenter.logs in views
+    def logs
+      Log.all
     end
+end
+```
 
 app/presenters/application_presenter.rb
 
-    class ApplicationPresenter < MetaPresenter::BasePresenter
-      # Makes presenter.page_title available in all of your app's views
-      def page_title
-        "My App"
-      end
+```ruby
+class ApplicationPresenter < MetaPresenter::BasePresenter
+  # Makes presenter.page_title available in all of your app's views
+  def page_title
+    "My App"
+  end
 
-      # presenter.last_login_at in views
-      def last_login_at
-        # controller methods from within the same scope
-        # as the presenter are directly available
-        current_user.last_login_at
-      end
-    end
+  # presenter.last_login_at in views
+  def last_login_at
+    # controller methods from within the same scope
+    # as the presenter are directly available
+    current_user.last_login_at
+  end
+end
+```
 
 app/presenters/pages_presenter.rb:
 
-    class PagesPresenter < ApplicationPresenter
-      # Makes presenter.nav_items available for
-      # all actions on PagesController
-      def nav_items
-        [
-            {name: "Home", path: home_path},
-            {name: "Logs", path: logs_path}
-        ]
-      end
-    end
+```ruby
+class PagesPresenter < ApplicationPresenter
+  # Makes presenter.nav_items available for
+  # all actions on PagesController
+  def nav_items
+    [
+        {name: "Home", path: home_path},
+        {name: "Logs", path: logs_path}
+    ]
+  end
+end
+```
 
 app/presenters/pages/home_presenter.rb
 
-    class Pages::HomePresenter << PagesPresenter
-      # presenter.email, presenter.id or any other
-      # method not already defined will delegate to
-      # the current_user
-      delegate_all_to :current_user
+```ruby
+class Pages::HomePresenter << PagesPresenter
+  # presenter.email, presenter.id or any other
+  # method not already defined will delegate to
+  # the current_user
+  delegate_all_to :current_user
 
-      # presenter.greeting in views
-      def greeting
-        "Hello, #{current_user.name}"
-      end
-    end
+  # presenter.greeting in views
+  def greeting
+    "Hello, #{current_user.name}"
+  end
+end
+```
 
 app/presenters/pages/logs_presenter.rb
 
-    class Pages::LogsPresenter << PagesPresenter
-      # presenter.size and presenter.last will delegate to 
-      # the controller's private `#logs`
-      delegate :size, :last, to: :logs
+```ruby
+class Pages::LogsPresenter << PagesPresenter
+  # presenter.size and presenter.last will delegate to 
+  # the controller's private `#logs`
+  delegate :size, :last, to: :logs
 
-      # presenter.log_text(log) in view
-      # for example in a haml view:
-      # 
-      # - presenter.logs.each do |log|
-      #   = presenter.log_text(log)
-      #
-      def log_text(log)
-        log.description
-      end
-    end
+  # presenter.log_text(log) in view
+  # for example in a haml view:
+  # 
+  # - presenter.logs.each do |log|
+  #   = presenter.log_text(log)
+  #
+  def log_text(log)
+    log.description
+  end
+end
+```
 
 TODO: add view examples
 
@@ -158,12 +181,14 @@ TODO: add view examples
 
 If you want to customize the `presenter` method you can specify a shorthand by adding an alias_method to your controller or mailer:
 
-    class ApplicationController < ActionController::Base
-      including MetaPresenter
+```ruby
+class ApplicationController < ActionController::Base
+  including MetaPresenter
 
-      # So convenient!
-      alias_method :presenter, :pr
-    end
+  # So convenient!
+  alias_method :presenter, :pr
+end
+```
 
 ## TODO
 * add Middleman support
