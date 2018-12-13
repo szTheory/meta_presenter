@@ -79,6 +79,8 @@ app/controllers/page_controller.rb
 
 ```ruby
 class ApplicationController < ActionController::Base
+  include MetaPresenter::Base
+
   # Controller methods automatically become available in views and other presenters.
   # So this gives you presenter.current_user in views, and you can call `current_user`
   # within your presenters as well
@@ -142,7 +144,7 @@ end
 app/presenters/pages/home_presenter.rb
 
 ```ruby
-class Pages::HomePresenter << PagesPresenter
+class Pages::HomePresenter < PagesPresenter
   # presenter.email, presenter.id or any other
   # method not already defined will delegate to
   # the current_user
@@ -160,12 +162,13 @@ app/views/pages/home.html.haml
 ```Haml
 %h1 Home
 %p #{greeting}
+%p Last login #{distance_of_time_in_words_to_now(last_login_at)}
 ```
 
 app/presenters/pages/logs_presenter.rb
 
 ```ruby
-class Pages::LogsPresenter << PagesPresenter
+class Pages::LogsPresenter < PagesPresenter
   # presenter.size and presenter.last will delegate to 
   # the controller's private `#logs`
   delegate :size, :last, to: :logs

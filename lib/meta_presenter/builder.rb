@@ -33,7 +33,8 @@ module MetaPresenter
 
     # @return [Class] Class constant for the built MetaPresenter::Base presenter
     def presenter_class
-      # Try to find the class (it's not guaranteed)
+      # Try to find the class (That's not guaranteed, for example
+      # if the presenter class was not defined or the file wasn't found).
       klass_name = ancestors.find do |klass_name|
         presenter_class_for(klass_name)
       end
@@ -62,7 +63,7 @@ module MetaPresenter
       def presenter_class_for(klass_name)
         presenter_class_name = "::#{klass_name}Presenter"
         begin
-          presenter_class_name.constantize
+          return presenter_class_name.constantize
 
         # No corresponding presenter class was found
         rescue NameError => e
@@ -71,7 +72,7 @@ module MetaPresenter
           if File.exists?(presenter_file_path)
             raise FileExistsButPresenterNotDefinedError.new(presenter_class_name, presenter_file_path)
           else
-            false
+            return :undefined_presenter_class
           end
         end
       end
