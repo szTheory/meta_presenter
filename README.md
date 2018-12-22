@@ -205,6 +205,7 @@ end
 ```
 
 ## TODO
+* fix specs again
 * add Middleman support
 * add support for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
 * tests for ActionMailer support
