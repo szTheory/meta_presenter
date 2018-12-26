@@ -44,8 +44,18 @@ describe MetaPresenter::Builder do
         let(:action_name) { "fairy" }
         before { expect(Object).to_not be_const_defined('FairyPresenter') }
 
-        it "defers to the parent presenter" do
-          expect(subject).to be PagesPresenter
+        context "parent presenter defines the method" do
+
+          it "defers to the parent presenter" do
+            expect(subject).to be PagesPresenter
+          end
+        end
+
+        context "parent presenter doesn't define the method" do
+
+          it "defers to the parent presenter" do
+            expect(subject).to be PagesPresenter
+          end
         end
 
         context "but the file exists" do
