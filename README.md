@@ -1,35 +1,31 @@
 [![Gem Version](https://badge.fury.io/rb/meta_presenter.svg)](https://badge.fury.io/rb/meta_presenter) [![Build Status](https://travis-ci.org/szTheory/meta_presenter.svg?branch=master)](https://travis-ci.org/szTheory/meta_presenter) [![Coverage Status](https://coveralls.io/repos/github/szTheory/meta_presenter/badge.svg?branch=master)](https://coveralls.io/github/szTheory/meta_presenter?branch=master) [![Inline docs](https://inch-ci.org/github/szTheory/meta_presenter.svg?branch=master)](https://inch-ci.org/github/szTheory/meta_presenter) [![Maintainability](https://api.codeclimate.com/v1/badges/8698d68a87ec1a9bfacd/maintainability)](https://codeclimate.com/github/szTheory/meta_presenter/maintainability) [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/szTheory/meta_presenter/blob/master/LICENSE.txt) [![Gem](https://img.shields.io/gem/dt/meta_presenter.svg)](https://rubygems.org/gems/meta_presenter) [![GitHub stars](https://img.shields.io/github/stars/szTheory/meta_presenter.svg?label=Stars&style=social)](https://github.com/szTheory/meta_presenter)
 
-![logo](https://user-images.githubusercontent.com/28652/50427588-2289cf80-087a-11e9-82e1-ae212adf0d07.png)
+[![logo](https://user-images.githubusercontent.com/28652/50427588-2289cf80-087a-11e9-82e1-ae212adf0d07.png)](https://metapresenter.com)
 
 MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
 
 ## Links
 
-* [Github Project Page](https://github.com/szTheory/meta_presenter)
+* [Project website](https://metapresenter.com)
 * [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
+
+![overlay-shape-bottom](https://user-images.githubusercontent.com/28652/50427665-20c10b80-087c-11e9-89e1-6931b28654b0.png)
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. Add this line to your application's Gemfile:
 
 ```ruby
 gem 'meta_presenter'
 ```
 
-And then execute:
+2. Bundle from the command line:
 
 ```sh
 $ bundle
 ```
 
-Or install it yourself as:
-
-```sh
-$ gem install meta_presenter
-```
-
-Include MetaPresenter::Helpers in your controller or mailer:
+3. Include MetaPresenter::Helpers in your controller or mailer:
 
 ```ruby
 class ApplicationController < ActionController::Base
