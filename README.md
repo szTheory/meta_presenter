@@ -4,12 +4,7 @@
 
 MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
 
-![overlay-shape-bottom-clean](https://user-images.githubusercontent.com/28652/50563312-ceec0b80-0ce9-11e9-8445-db82a5465a2d.png)
-
-## Links
-
-* [Project website](https://metapresenter.com)
-* [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
+![overlay-shape-clean-sm](https://user-images.githubusercontent.com/28652/50854229-828c7580-1352-11e9-824b-a78c9a2404fb.png)
 
 ## Installation
 
@@ -38,10 +33,6 @@ class ApplicationMailer < ActionMailer::Base
   include MetaPresenter::Base
 end
 ```
-
-## Requirements
-
-MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
 
 ## Example
 
@@ -199,6 +190,15 @@ class ApplicationController < ActionController::Base
   alias_method :presenter, :pr
 end
 ```
+
+## Requirements
+
+MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
+
+## Links
+
+* [Project website](https://metapresenter.com)
+* [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
 
 ## TODO
 * fix specs again
