@@ -24,13 +24,13 @@ $ bundle
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include MetaPresenter::Base
+  include MetaPresenter::Helpers
 end
 ```
 
 ```ruby
 class ApplicationMailer < ActionMailer::Base
-  include MetaPresenter::Base
+  include MetaPresenter::Helpers
 end
 ```
 
