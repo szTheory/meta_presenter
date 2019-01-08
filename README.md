@@ -66,7 +66,7 @@ app/controllers/page_controller.rb
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include MetaPresenter::Base
+  include MetaPresenter::Helpers
 
   # Controller methods automatically become available in views and other presenters.
   # So this gives you presenter.current_user in views, and you can call `current_user`
