@@ -43,9 +43,11 @@ module MetaPresenter
       # Try to find the presenter class (Not guaranteed, 
       # for example if the presenter class wasn't defined
       # or if the file wasn't found)
-      klass = ancestors.lazy.map do |klass_name|
-        presenter_class_for(klass_name)
-      end.find(&:itself)
+      klass = nil
+      ancestors.each do |klass_name|
+        klass = presenter_class_for(klass_name)
+        break if !klass.nil?
+      end
 
       if klass.nil?
         raise NoPresenterClassDefinedError.new(controller, action_name)
