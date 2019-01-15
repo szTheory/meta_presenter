@@ -1,0 +1,2 @@
+class WithoutPresenterController < ApplicationController
+end

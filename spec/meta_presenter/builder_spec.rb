@@ -31,14 +31,9 @@ describe MetaPresenter::Builder do
     end
 
     context "controller without a presenter" do
-      let(:controller_class) { ApplicationController }
+      let(:controller_class) { WithoutPresenterController }
 
-      before do
-        Object.send(:remove_const, :ApplicationPresenter)
-        expect(Object.constants).to_not include(:ApplicationPresenter)
-      end
-
-      let(:presenter_file_path) { File.join(object.presenter_base_dir, "application_presenter.rb") }
+      let(:presenter_file_path) { File.join(object.presenter_base_dir, "without_presenter_presenter.rb") }
 
       context "but file exists" do
         before do
