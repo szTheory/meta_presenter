@@ -201,12 +201,15 @@ MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help 
 * [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
 
 ## TODO
-* fix specs again
-* add Middleman support
-* add support for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
+* fix specs for edge build
 * tests for ActionMailer support
 * optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
-* add support for layouts
+* add support for layout-level presenters
+
+## TODO (lower priority)
+* add backwards compatibility for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
+* make the presenters path configurable (instead of just app/presenters) (?)
+* add Middleman support (?)
 
 ## Contributing
 

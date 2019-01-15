@@ -31,21 +31,33 @@ module MetaPresenter
       end
     end
 
+    class NoPresenterClassDefinedError < NameError
+      # Create a new error
+      def initialize(controller, action_name)
+        super("No presenter defined for #{controller.class.to_s}##{action_name}")
+      end
+    end
+
     # @return [Class] Class constant for the built MetaPresenter::Base presenter
     def presenter_class
       # Try to find the class (That's not guaranteed, for example
       # if the presenter class was not defined or the file wasn't found).
-      klass_name = ancestors.find do |klass_name|
+      klass = ancestors.lazy.map do |klass_name|
         presenter_class_for(klass_name)
+      end.find(&:itself)
+
+      if klass.nil?
+        raise NoPresenterClassDefinedError.new(controller, action_name)
       end
 
-      # Return the actual class
-      presenter_class_for(klass_name)
+      klass
     end
 
     private
       def all_ancestors
-        controller.class.ancestors
+        controller.class.ancestors.select do |ancestor|
+          ancestor <= ActionController::Base
+        end
       end
 
       def mailer_ancestors
@@ -68,11 +80,11 @@ module MetaPresenter
         # No corresponding presenter class was found
         rescue NameError => e
           filename = "#{presenter_class_name.underscore}.rb"
-          presenter_file_path = File.join(Rails.root, "app", "presenters", filename)
+          presenter_file_path = File.join(presenter_base_dir, filename)
           if File.exists?(presenter_file_path)
             raise FileExistsButPresenterNotDefinedError.new(presenter_class_name, presenter_file_path)
           else
-            return :undefined_presenter_class
+            return nil
           end
         end
       end
@@ -107,6 +119,11 @@ module MetaPresenter
         else
           ancestors_list
         end
+      end
+
+      # TODO: make the presenters path configurable
+      def presenter_base_dir
+        File.join(Rails.root, "app", "presenters")
       end
   end
 end

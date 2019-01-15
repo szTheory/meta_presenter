@@ -28,10 +28,17 @@ describe MetaPresenter::Builder do
       let(:controller_class) { ApplicationController }
 
       it { is_expected.to be ApplicationPresenter }
+
+      # TODO: test the cases where a method for the action is/isn't defined
+      # (if not defined should raise NoPresenterClassDefinedError)
     end
 
     context "subclass of ApplicationController" do
       let(:controller_class) { PagesController }
+
+      before do
+        expect(controller_class.ancestors).to include(ApplicationController)
+      end
 
       context "action with a presenter class defined" do
         let(:action_name) { "logs" }
