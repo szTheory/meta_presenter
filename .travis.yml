@@ -20,3 +20,5 @@ matrix:
     - rvm: 2.2.0
       gemfile: gemfiles/actionpack5.gemfile
 script: bundle exec rspec
+before_install:
+  - gem install bundler -v '< 2'
