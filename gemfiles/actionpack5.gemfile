@@ -2,10 +2,10 @@
 
 source "https://rubygems.org"
 
-gem "pry"
 gem "actionpack", "5.0.0"
 
 group :development, :test do
+  gem "pry"
   gem "rspec"
   gem "builder"
   gem "rb-readline"

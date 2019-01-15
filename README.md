@@ -201,7 +201,10 @@ MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help 
 * [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
 
 ## Specs
-To run the specs for the currently running Ruby version, run `bundle install` and then `bundle exec rspec`. To run specs for every supported version of ActionPack, run `bundle exec appraisal install` and then `bundle exec appraisal rspec`
+To run the specs for the currently running Ruby version, run `bundle install` and then `bundle exec rspec`. To run specs for every supported version of ActionPack, run `bundle exec appraisal install` and then `bundle exec appraisal rspec`.
+
+## Gem release
+Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Then commit changes and tag the commit with the current release number with `git tag -a vVersionNumberHere -m vVersionNumberHere`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO
 * tests for ActionMailer support
