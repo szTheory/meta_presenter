@@ -40,8 +40,9 @@ module MetaPresenter
 
     # @return [Class] Class constant for the built MetaPresenter::Base presenter
     def presenter_class
-      # Try to find the class (That's not guaranteed, for example
-      # if the presenter class was not defined or the file wasn't found).
+      # Try to find the presenter class (Not guaranteed, 
+      # for example if the presenter class wasn't defined
+      # or if the file wasn't found)
       klass = ancestors.lazy.map do |klass_name|
         presenter_class_for(klass_name)
       end.find(&:itself)
@@ -51,6 +52,10 @@ module MetaPresenter
       end
 
       klass
+    end
+
+    def presenter_base_dir
+      File.join(Rails.root, "app", "presenters")
     end
 
     private
@@ -119,11 +124,6 @@ module MetaPresenter
         else
           ancestors_list
         end
-      end
-
-      # TODO: make the presenters path configurable
-      def presenter_base_dir
-        File.join(Rails.root, "app", "presenters")
       end
   end
 end

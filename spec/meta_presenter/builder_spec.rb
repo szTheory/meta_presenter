@@ -28,9 +28,25 @@ describe MetaPresenter::Builder do
       let(:controller_class) { ApplicationController }
 
       it { is_expected.to be ApplicationPresenter }
+    end
 
-      # TODO: test the cases where a method for the action is/isn't defined
-      # (if not defined should raise NoPresenterClassDefinedError)
+    context "controller without a presenter" do
+      let(:controller_class) { ApplicationController }
+
+      before do
+        Object.send(:remove_const, :ApplicationPresenter)
+        expect(Object.constants).to_not include(:ApplicationPresenter)
+      end
+
+      let(:presenter_file_path) { File.join(object.presenter_base_dir, "application_presenter.rb") }
+
+      context "but file exists" do
+        before do
+          expect(File).to be_exists(presenter_file_path)
+        end
+
+        it { expect { subject }.to raise_error(MetaPresenter::Builder::FileExistsButPresenterNotDefinedError) }
+      end
     end
 
     context "subclass of ApplicationController" do
