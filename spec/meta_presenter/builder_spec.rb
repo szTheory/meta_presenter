@@ -1,5 +1,4 @@
 require 'spec_helper'
-# require 'ostruct'
 
 describe MetaPresenter::Builder do
   let(:controller_class) { ApplicationController }
