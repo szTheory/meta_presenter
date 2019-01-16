@@ -31,10 +31,10 @@ module MetaPresenter
       end
     end
 
-    class NoPresenterClassDefinedError < NameError
+    class InvalidControllerError < NameError
       # Create a new error
-      def initialize(controller, action_name)
-        super("No presenter defined for #{controller.class.to_s}##{action_name}")
+      def initialize(controller)
+        super("You tried to present a #{controller.class.name} class, but only a Rails controller or mailer can be presented")
       end
     end
 
@@ -49,10 +49,6 @@ module MetaPresenter
         break if !klass.nil?
       end
 
-      if klass.nil?
-        raise NoPresenterClassDefinedError.new(controller, action_name)
-      end
-
       klass
     end
 
@@ -63,7 +59,13 @@ module MetaPresenter
     private
       def all_ancestors
         controller.class.ancestors.select do |ancestor|
-          ancestor <= ActionController::Base
+          if controller.class <= ActionController::Base
+            ancestor <= ActionController::Base
+          elsif controller.class <= ActionMailer::Base
+            ancestor <= ActionMailer::Base
+          else
+            raise InvalidControllerError.new(controller)
+          end
         end
       end
 

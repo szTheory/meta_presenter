@@ -1,8 +1,9 @@
 require 'spec_helper'
+# require 'ostruct'
 
 describe MetaPresenter::Builder do
   let(:controller_class) { ApplicationController }
-  let(:controller) { controller_class.new }
+  let(:controller) { controller_class.send(:new) }
   let(:action_name) { 'logs' }
   let(:object) { described_class.new(controller, action_name) }
 
@@ -42,6 +43,27 @@ describe MetaPresenter::Builder do
 
         it { expect { subject }.to raise_error(MetaPresenter::Builder::FileExistsButPresenterNotDefinedError) }
       end
+    end
+
+    context "neither a controller nor a mailer" do
+      let(:controller_class) { OpenStruct }
+
+      before do
+        expect(controller_class < ActionController::Base).to_not be true
+        expect(controller_class < ActionMailer::Base).to_not be true
+      end
+
+      it { expect { subject }.to raise_error(MetaPresenter::Builder::InvalidControllerError) }
+    end
+
+    context "mailer" do
+      let(:controller_class) { ApplicationMailer }
+
+      before do
+        expect(controller_class < ActionMailer::Base).to be true
+      end
+
+      it { is_expected.to be Mailers::ApplicationPresenter }
     end
 
     context "subclass of ApplicationController" do

@@ -1,5 +1,6 @@
 require 'meta_presenter/builder'
 require 'active_support/concern'
+require 'active_support/rescuable'
 
 module MetaPresenter
   # Including this module in your controller will give
@@ -34,7 +35,9 @@ module MetaPresenter
         @presenter ||= begin
           controller = self
           klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
-          raise PresenterClassNotFoundError.new(controller, action_name) if klass == :undefined_presenter_class
+          if klass.nil?
+            raise PresenterClassNotFoundError.new(controller, action_name)
+          end
           klass.new(controller)
         end
       end
