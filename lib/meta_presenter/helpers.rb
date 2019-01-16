@@ -25,7 +25,7 @@ module MetaPresenter
 
     class PresenterClassNotFoundError < NameError
       def initialize(controller, action_name)
-        super("No presenter class and method found for #{controller.class.name}##{action_name} (Are you rendering another action's template? If so then move your presenter method to a base presenter class for the controller that both action presenters inherit from)")
+        super("No presenter class and method found for #{controller.class.name}##{action_name} (Are you rendering another action's template? If so then move your presenter method to a base presenter class for the controller that both action presenters inherit from or a module that's included in both presenter classes)")
       end
     end
 

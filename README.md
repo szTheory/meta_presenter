@@ -36,7 +36,7 @@ end
 
 ## Example
 
-Say you have a PagesController with an action for home and logs. Underneath `app/presenters` you can add a class for each action. In this example we'll also create an application and base presenter we'll inherit from to re-use code in the per-action presenters.
+Say you have a PagesController with `#home` and `#logs` actions. Underneath app/presenters you can add a presenter class for each action (Pages::HomePresenter and Pages::LogsPresenter). We'll also create an ApplicationPresenter superclass for methods that can be used in any action throughout the app.
 
 ```
 app/
@@ -113,7 +113,7 @@ class ApplicationPresenter < MetaPresenter::BasePresenter
 end
 ```
 
-app/presenters/pages_presenter.rb:
+app/presenters/pages_presenter.rb
 
 ```ruby
 class PagesPresenter < ApplicationPresenter
@@ -121,8 +121,8 @@ class PagesPresenter < ApplicationPresenter
   # all actions on PagesController
   def nav_items
     [
-        {name: "Home", path: home_path},
-        {name: "Logs", path: logs_path}
+      {name: "Home", path: home_path},
+      {name: "Logs", path: logs_path}
     ]
   end
 end
@@ -193,7 +193,7 @@ end
 
 ## Requirements
 
-MetaPresenter supports Ruby >= 2.1 and ActionPack >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
+MetaPresenter supports Ruby >= 2.1 and ActionPack/ActionMailer >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
 
 ## Links
 
