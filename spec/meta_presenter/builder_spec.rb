@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MetaPresenter::Builder do
   let(:controller_class) { ApplicationController }
   let(:controller) { controller_class.send(:new) }
-  let(:action_name) { 'logs' }
+  let(:action_name) { 'test' }
   let(:object) { described_class.new(controller, action_name) }
 
   def controller_ancestors

@@ -7,7 +7,7 @@ describe MetaPresenter::Base do
 
     let(:controller_class) { ApplicationController }
     let(:controller) { controller_class.new }
-    let(:action_name) { 'logs' }
+    let(:action_name) { 'test' }
     let(:presenter) { controller.view_context.presenter }
     
     before do
