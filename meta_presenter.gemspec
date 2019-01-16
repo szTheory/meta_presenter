@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'meta_presenter'
-  s.version       = '0.1.5'
+  s.version       = '0.1.6'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['szTheory']
   s.description   = %q{Presenter pattern in your Rails controllers and actions}
