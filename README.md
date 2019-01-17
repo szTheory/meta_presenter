@@ -167,15 +167,19 @@ class Pages::LogsPresenter < PagesPresenter
 end
 ```
 
-app/views/pages/logs.html.haml
+app/views/pages/logs.html.erb
 
-```Haml
-%h1 Logs
-%p Num logs: #{presenter.size}
-%p Last log: #{presenter.log_text(presenter.last)}
-%ul
-  - presenter.logs.each do |log|
-    %li= presenter.log_text(log)
+```Erb
+<h1>Logs</h1>
+<p>Num logs: #{presenter.size}</p>
+<p>Last log: #{presenter.log_text(presenter.last)}</p>
+<ul>
+  <% presenter.logs.each do |log| %>
+    <li>
+      <%= presenter.log_text(log) %>
+    </li>
+  <% end %>
+</ul>
 ```
 
 ## Aliasing the presenter methods
