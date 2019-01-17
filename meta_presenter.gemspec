@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'meta_presenter'
-  s.version       = '0.2.0'
+  s.version       = '0.2.1'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['szTheory']
   s.description   = %q{Write highly focused and testable view presenter classes for your Rails controllers and actions}
