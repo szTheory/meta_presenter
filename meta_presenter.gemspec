@@ -5,8 +5,8 @@ Gem::Specification.new do |s|
   s.version       = '0.2.0'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['szTheory']
-  s.description   = %q{Presenter pattern in your Rails controllers and actions}
-  s.summary       = %q{MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into small, tight, classes that are easily testable. There's even a DSL for method delegation on objects to reduce boilerplate.}
+  s.description   = %q{Write highly focused and testable view presenter classes for your Rails controllers and actions}
+  s.summary       = %q{MetaPresenter is a Ruby gem for writing highly focused and testable view Rails presenter classes. For each controller/action pair you get a presenter class in app/presenters that you can use in your views with with presenter.method_name. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.}
   s.homepage      = 'https://github.com/szTheory/meta_presenter'
   s.license       = 'MIT'
   s.metadata = {
