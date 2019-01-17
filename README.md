@@ -204,7 +204,7 @@ MetaPresenter supports Ruby >= 2.1 and ActionPack/ActionMailer >= 4.0. If you'd 
 To run the specs for the currently running Ruby version, run `bundle install` and then `bundle exec rspec`. To run specs for every supported version of ActionPack, run `bundle exec appraisal install` and then `bundle exec appraisal rspec`.
 
 ## Gem release
-Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Then commit changes and tag the commit with the current release number with `git tag -a "vVersionNumberHere" -m "vVersionNumberHere"`. Push the commit with `git push`, then push the tags with `git push origin --tags`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
+Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Commit your changes and push to Github, then tag the commit with the current release number using Github's Releases interface (use the format vx.x.x, where x is the semantic version number). Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO
 * create an example app and link to the repo for it in this README
