@@ -207,7 +207,6 @@ To run the specs for the currently running Ruby version, run `bundle install` an
 Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Then commit changes and tag the commit with the current release number with `git tag -a "vVersionNumberHere" -m "vVersionNumberHere"`. Push the commit with `git push`, then push the tags with `git push origin --tags`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO
-* add examples to README for delegate_all_to and delegate_to
 * create an example app and link to the repo for it in this README
 * proofread the README instructions to make sure everything is correct
 * optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
