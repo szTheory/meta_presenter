@@ -20,7 +20,7 @@ describe MetaPresenter::Base::DelegateAllTo do
       # stub action name on the controller
       allow(controller).to receive(:action_name).and_return(action_name)
 
-      controller.class.define_method(delegate_object_method_name) do
+      controller.class.redefine_method(delegate_object_method_name) do
         OpenStruct.new(name: "Mario")
       end
 
