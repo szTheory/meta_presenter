@@ -12,7 +12,7 @@ module MetaPresenter
         # all incoming methods send to the presenter that
         # we not already handled by the presenter otherwise
         # (such as explicitly defining the method)
-        class_attribute :delegate_all_to
+        class_attribute :delegate_all_to, instance_reader: false, instance_writer: false
 
         include InstanceMethods
       end

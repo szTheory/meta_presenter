@@ -2,7 +2,7 @@
 
 [![logo](https://user-images.githubusercontent.com/28652/50427588-2289cf80-087a-11e9-82e1-ae212adf0d07.png)](https://metapresenter.com)
 
-MetaPresenter is a Ruby gem that gives you access to the powerful presenter pattern in your Rails controllers. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
+MetaPresenter is a Ruby gem for writing highly focused and testable view Rails presenter classes. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
 
 ![overlay-shape-clean-sm](https://user-images.githubusercontent.com/28652/50854229-828c7580-1352-11e9-824b-a78c9a2404fb.png)
 
@@ -135,7 +135,7 @@ class Pages::HomePresenter < PagesPresenter
   # presenter.email, presenter.id or any other
   # method not already defined will delegate to
   # the current_user
-  delegate_all_to :current_user
+  delegate_all_to = :current_user
 
   # presenter.greeting in views
   def greeting
@@ -144,12 +144,12 @@ class Pages::HomePresenter < PagesPresenter
 end
 ```
 
-app/views/pages/home.html.haml
+app/views/pages/home.html.erb
 
-```Haml
-%h1 Home
-%p #{greeting}
-%p Last login #{distance_of_time_in_words_to_now(last_login_at)}
+```Erb
+<h1>Home</h1>
+<p><%= presenter.greeting %></p>
+<p>Last login <%= distance_of_time_in_words_to_now(presenter.last_login_at) %></p>
 ```
 
 app/presenters/pages/logs_presenter.rb
@@ -207,6 +207,8 @@ To run the specs for the currently running Ruby version, run `bundle install` an
 Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Then commit changes and tag the commit with the current release number with `git tag -a "vVersionNumberHere" -m "vVersionNumberHere"`. Push the commit with `git push`, then push the tags with `git push origin --tags`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO
+* add examples to README for delegate_all_to and delegate_to
+* create an example app and link to the repo for it in this README
 * proofread the README instructions to make sure everything is correct
 * optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
 * add support for layout-level presenters
