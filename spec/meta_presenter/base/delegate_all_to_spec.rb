@@ -29,13 +29,13 @@ describe MetaPresenter::Base::DelegateAllTo do
     end
 
     def define_method_on_presenter
-      presenter.class.define_method(method_name) do
+      presenter.class.redefine_method(method_name) do
         "presenter retval"
       end
     end
 
     def define_method_on_controller
-      controller.class.define_method(method_name) do
+      controller.class.redefine_method(method_name) do
         "controller retval"
       end
     end

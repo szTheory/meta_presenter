@@ -23,21 +23,12 @@ module MetaPresenter
       helper_method :presenter
     end
 
-    class PresenterClassNotFoundError < NameError
-      def initialize(controller, action_name)
-        super("No presenter class and method found for #{controller.class.name}##{action_name} (Are you rendering another action's template? If so then move your presenter method to a base presenter class for the controller that both action presenters inherit from or a module that's included in both presenter classes)")
-      end
-    end
-
     private
       # Initialize presenter with the current controller
       def presenter
         @presenter ||= begin
           controller = self
           klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
-          if klass.nil?
-            raise PresenterClassNotFoundError.new(controller, action_name)
-          end
           klass.new(controller)
         end
       end
