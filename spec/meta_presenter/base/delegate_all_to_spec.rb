@@ -13,7 +13,6 @@ describe MetaPresenter::Base::DelegateAllTo do
     let(:controller_all_instance_methods) { controller.class.instance_methods(true) }
     let(:presenter_all_instance_methods) { presenter.class.instance_methods(true) }
 
-    # let(:delegate_object) { OpenStruct.new(name: "Mario") }
     let(:delegate_object) { controller.send(delegate_object_method_name) }
     let(:delegate_object_method_name) { :character }
 
@@ -59,7 +58,6 @@ describe MetaPresenter::Base::DelegateAllTo do
           end
 
           it "calls the method on the delegated object" do
-            # binding.pry
             expect(subject).to eql(delegate_object.send(method_name))
           end
         end
