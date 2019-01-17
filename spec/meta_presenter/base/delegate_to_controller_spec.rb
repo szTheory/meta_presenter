@@ -30,6 +30,7 @@ describe MetaPresenter::Base::DelegateToController do
         end
 
         it { is_expected.to eql("pages controller method return value") }
+        it { expect(presenter).to respond_to(method_name) }
       end
 
       context "on a superclass" do
@@ -41,6 +42,7 @@ describe MetaPresenter::Base::DelegateToController do
         end
 
         it { is_expected.to eql("application controller method return value") }
+        it { expect(presenter).to respond_to(method_name) }
       end
     end
 
@@ -53,6 +55,7 @@ describe MetaPresenter::Base::DelegateToController do
       end
 
       it { expect { subject }.to raise_error(NoMethodError) }
+      it { expect(presenter).to_not respond_to(method_name) }
     end
   end
 end

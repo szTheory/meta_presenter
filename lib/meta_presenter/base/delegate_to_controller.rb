@@ -33,7 +33,7 @@ module MetaPresenter
         # @param *args method name and the other arguments
         def respond_to_missing?(*args)
           method_name = args.first
-          delegates_controller_method? || super
+          delegates_controller_method?(method_name) || super
         end
 
         private
