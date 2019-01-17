@@ -123,11 +123,7 @@ module MetaPresenter
         ancestors_list = all_ancestors[0..all_ancestors.index(until_class)]
 
         # map to the fully qualified class name
-        if block_given?
-          ancestors_list.map { |klass| yield(klass) }
-        else
-          ancestors_list
-        end
+        ancestors_list.map { |klass| yield(klass) }
       end
   end
 end
