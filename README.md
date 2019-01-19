@@ -197,7 +197,7 @@ end
 
 ## Requirements
 
-MetaPresenter supports Ruby >= 2.1 and ActionPack/ActionMailer >= 4.0. If you'd like to help adding support for older versions please submit a pull request with passing specs.
+MetaPresenter supports Ruby >= 2.1 and ActionPack/ActionMailer >= 3.0.12. If you'd like to help adding support for older versions please submit a pull request with passing specs.
 
 ## Links
 
