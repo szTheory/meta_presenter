@@ -217,10 +217,6 @@ Make sure the specs pass, bump the version number in meta_presenter.gemspec, bui
 * add support for layout-level presenters
 * add Rails 6 support once it comes out (hopefully just have to add a gemfiles/actionpack6.gemfile and it will run with the Appraisal suite)
 
-## TODO (lower priority)
-* add backwards compatibility for actionsupport3, will require enabling it in the Appraisal file and then fixing any bugs in the build
-* add Middleman support (?)
-
 ## Contributing
 
 1. Fork it
