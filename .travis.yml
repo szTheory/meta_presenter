@@ -18,6 +18,8 @@ matrix:
       gemfile: gemfiles/rails5.gemfile
     - rvm: 2.2.0
       gemfile: gemfiles/rails5.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails3.gemfile
 script: bundle exec rspec
 before_install:
   - gem install bundler -v '< 2'
