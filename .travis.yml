@@ -2,8 +2,6 @@ language: ruby
 cache: bundler
 matrix:
   fast_finish: true
-branches:
-  only: master
 rvm:
   - 2.1.0
   - 2.2.0
