@@ -2,8 +2,6 @@ language: ruby
 cache: bundler
 matrix:
   fast_finish: true
-branches:
-  only: master
 rvm:
   - 2.1.0
   - 2.2.0
@@ -11,6 +9,7 @@ rvm:
   - 2.4.0
   - 2.5.0
 gemfile:
+  - gemfiles/rails3.gemfile
   - gemfiles/rails4.gemfile
   - gemfiles/rails5.gemfile
 matrix:
@@ -19,6 +18,8 @@ matrix:
       gemfile: gemfiles/rails5.gemfile
     - rvm: 2.2.0
       gemfile: gemfiles/rails5.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails3.gemfile
 script: bundle exec rspec
 before_install:
   - gem install bundler -v '< 2'

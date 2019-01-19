@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'meta_presenter'
-  s.version       = '0.2.1'
+  s.version       = '0.2.2'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['szTheory']
   s.description   = %q{Write highly focused and testable view presenter classes for your Rails controllers and actions}
@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.1.0'
 
-  s.add_dependency 'actionpack', '>= 4.0'
-  s.add_dependency 'actionmailer', '>= 4.0'
+  s.add_dependency 'actionpack', '>= 3.0.12'
+  s.add_dependency 'actionmailer', '>= 3.0.12'
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'bundler'
