@@ -2,7 +2,7 @@
 
 [![logo](https://user-images.githubusercontent.com/28652/50427588-2289cf80-087a-11e9-82e1-ae212adf0d07.png)](https://metapresenter.com)
 
-MetaPresenter is a Ruby gem for writing highly focused and testable view Rails presenter classes. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
+MetaPresenter is a Ruby gem for writing highly focused and testable Rails view presenter classes. For each controller/action pair you get a presenter class in `app/presenters` that you can use in your views with with `presenter.method_name`. This helps you decompose your helper logic into tight, easily testable classes. There's even a DSL for method delegation on objects to reduce boilerplate.
 
 ![overlay-shape-clean-sm](https://user-images.githubusercontent.com/28652/50854229-828c7580-1352-11e9-824b-a78c9a2404fb.png)
 
