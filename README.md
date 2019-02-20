@@ -211,7 +211,6 @@ To run the specs for the currently running Ruby version, run `bundle install` an
 Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Commit your changes and push to Github, then tag the commit with the current release number using Github's Releases interface (use the format vx.x.x, where x is the semantic version number). You can pull the latest tags to your local repo with `git pull --tags`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO
-* Add Ruby 2.6.0 support to CI
 * create an example app and link to the repo for it in this README
 * proofread the README instructions to make sure everything is correct
 * optional `rake meta_presenter:install` that generates the scaffolding for you. Or, you can manually create the files you want.
