@@ -8,19 +8,19 @@ MetaPresenter is a Ruby gem for writing highly focused and testable Rails view p
 
 ## Installation
 
-1. Add this line to your application's Gemfile:
+#### 1. Add this line to your application's Gemfile:
 
 ```ruby
 gem 'meta_presenter'
 ```
 
-2. Bundle from the command line:
+#### 2. Bundle from the command line:
 
 ```sh
 $ bundle
 ```
 
-3. Include MetaPresenter::Helpers in your controller or mailer:
+#### 3. Include MetaPresenter::Helpers in ApplicationController:
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -29,14 +29,80 @@ end
 ```
 
 ```ruby
+# mailers are supported too
 class ApplicationMailer < ActionMailer::Base
   include MetaPresenter::Helpers
 end
 ```
 
-## Example
+## Setup
 
-Say you have a PagesController with `#home` and `#logs` actions. Underneath app/presenters you can add a presenter class for each action (Pages::HomePresenter and Pages::LogsPresenter). We'll also create an ApplicationPresenter superclass for methods that can be used in any action throughout the app.
+#### 1. Create an ApplicationPresenter
+
+ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page` and `presenter.last_login_at` accessible from all views.
+
+```ruby
+# app/presenters/application_presenter.rb
+class ApplicationPresenter < MetaPresenter::BasePresenter
+  def page_title
+    "My App"
+  end
+
+  def last_login
+    # controller methods are available to
+    # presenters in the same namespace
+    time = current_user.last_login_at
+    distance_of_time_in_words_to_now(time)
+  end
+end
+```
+
+#### 2. Create presenters for your controllers
+
+This example makes `presenter.nav_items` available for all actions on `PagesController`:
+
+```ruby
+# app/presenters/pages_presenter.rb
+class PagesPresenter < ApplicationPresenter
+  def tooltip(text)
+    content_tag(:p, text, class: 'font-body1')
+  end
+end
+```
+
+```Erb
+<!-- app/views/pages/about.html.erb -->
+<h1>About</h1>
+<p data-tipsy-content="<%= presenter.tooltip('Don't Be Evil') %>">Gloogle</p>
+```
+
+#### 3. Create presenters for specific actions
+
+This example makes `presenter.greeting` accessible from views. It also delegates undefined methods to `current_user`, so `presenter.email` would call `current_user.email`:
+
+```ruby
+# app/presenters/pages/home_presenter.rb
+class Pages::HomePresenter < PagesPresenter
+  # can also delegate specific methods. ex:
+  # delegate :email, :last, to: :current_user
+  delegate_all_to = :current_user
+
+  def greeting
+    "Hello, #{current_user.name}"
+  end
+end
+```
+
+```Erb
+<!-- app/views/pages/home.html.erb -->
+<h1>Home</h1>
+<p><%= presenter.greeting %></p>
+<p>Last login <%= presenter.last_login %></p>
+```
+
+## Example directory structure
+
+Note that presenters mirror the namespace of controllers.
 
 ```
 app/
@@ -60,126 +126,6 @@ spec/ (or test/)
     pages/
       home_presenter_spec.rb
       logs_presenter_spec.rb
-```
-
-app/controllers/page_controller.rb
-
-```ruby
-class ApplicationController < ActionController::Base
-  include MetaPresenter::Helpers
-
-  # Controller methods automatically become available in views and other presenters.
-  # So this gives you presenter.current_user in views, and you can call `current_user`
-  # within your presenters as well
-  def current_user
-    User.first
-  end
-end
-```
-
-app/controllers/dashboard_controller.rb
-
-```ruby
-class ApplicationController < ActionController::Base
-  def home
-  end
-
-  def logs
-  end
-
-  private
-    # presenter.logs in views
-    def logs
-      Log.all
-    end
-end
-```
-
-app/presenters/application_presenter.rb
-
-```ruby
-class ApplicationPresenter < MetaPresenter::BasePresenter
-  # Makes presenter.page_title available in all of your app's views
-  def page_title
-    "My App"
-  end
-
-  # presenter.last_login_at in views
-  def last_login_at
-    # controller methods from within the same scope
-    # as the presenter are directly available
-    current_user.last_login_at
-  end
-end
-```
-
-app/presenters/pages_presenter.rb
-
-```ruby
-class PagesPresenter < ApplicationPresenter
-  # Makes presenter.nav_items available for
-  # all actions on PagesController
-  def nav_items
-    [
-      {name: "Home", path: home_path},
-      {name: "Logs", path: logs_path}
-    ]
-  end
-end
-```
-
-app/presenters/pages/home_presenter.rb
-
-```ruby
-class Pages::HomePresenter < PagesPresenter
-  # presenter.email, presenter.id or any other
-  # method not already defined will delegate to
-  # the current_user
-  delegate_all_to = :current_user
-
-  # presenter.greeting in views
-  def greeting
-    "Hello, #{current_user.name}"
-  end
-end
-```
-
-app/views/pages/home.html.erb
-
-```Erb
-<h1>Home</h1>
-<p><%= presenter.greeting %></p>
-<p>Last login <%= distance_of_time_in_words_to_now(presenter.last_login_at) %></p>
-```
-
-app/presenters/pages/logs_presenter.rb
-
-```ruby
-class Pages::LogsPresenter < PagesPresenter
-  # presenter.size and presenter.last will delegate to 
-  # the controller's private `#logs`
-  delegate :size, :last, to: :logs
-
-  # presenter.log_text(log) in view
-  def log_text(log)
-    log.description
-  end
-end
-```
-
-app/views/pages/logs.html.erb
-
-```Erb
-<h1>Logs</h1>
-<p>Num logs: #{presenter.size}</p>
-<p>Last log: #{presenter.log_text(presenter.last)}</p>
-<ul>
-  <% presenter.logs.each do |log| %>
-    <li>
-      <%= presenter.log_text(log) %>
-    </li>
-  <% end %>
-</ul>
 ```
 
 ## Aliasing the presenter methods
