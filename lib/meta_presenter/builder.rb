@@ -20,7 +20,7 @@ module MetaPresenter
       @action_name = action_name
     end
 
-    # Error for there's no presenter class defined but a file for it exists
+    # Error when there's no presenter class defined but a file for it exists
     class FileExistsButPresenterNotDefinedError < NameError
       # Create a new error
       #
