@@ -13,8 +13,7 @@ appraise "rails5" do
   gem "actionmailer", "5.0.0"
 end
 
-# TODO: uncomment this once Rails 6 is released on April 30, 2019
-# appraise "rails6" do
-#   gem "actionpack", "6.0.0"
-#   gem "actionmailer", "6.0.0"
-# end
+appraise "rails6" do
+  gem "actionpack", "6.0.0"
+  gem "actionmailer", "6.0.0"
+end

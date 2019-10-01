@@ -1,0 +1,1 @@
+* Add Rails 6 support.
