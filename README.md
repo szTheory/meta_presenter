@@ -88,7 +88,7 @@ class Pages::HomePresenter < PagesPresenter
   delegate_all_to = :current_user
 
   def greeting
-    "Hello, #{current_user.name}"
+    "Hello, #{name}"
   end
 end
 ```
