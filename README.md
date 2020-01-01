@@ -65,7 +65,7 @@ This example makes `presenter.tooltip(text)` available for all actions on `Pages
 # app/presenters/pages_presenter.rb
 class PagesPresenter < ApplicationPresenter
   def tooltip(text)
-    content_tag(:p, text, class: 'font-body1')
+    content_tag(:p, text, class: "font-body1")
   end
 end
 ```
@@ -73,7 +73,7 @@ end
 ```Erb
 <!-- app/views/pages/about.html.erb -->
 <h1>About</h1>
-<p data-tipsy-content="<%= presenter.tooltip('Don't Be Evil') %>">Gloogle</p>
+<p data-tipsy-content="<%= presenter.tooltip("Don't Be Evil") %>">Gloogle</p>
 ```
 
 #### 3. Create presenters for specific actions
