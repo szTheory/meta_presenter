@@ -59,7 +59,7 @@ end
 
 #### 2. Create presenters for your controllers
 
-This example makes `presenter.nav_items` available for all actions on `PagesController`:
+This example makes `presenter.tooltip(text)` available for all actions on `PagesController`:
 
 ```ruby
 # app/presenters/pages_presenter.rb
