@@ -39,7 +39,7 @@ end
 
 #### 1. Create an ApplicationPresenter
 
-ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page` and `presenter.last_login_at` accessible from all views.
+ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page_title` and `presenter.last_login` accessible from all views.
 
 ```ruby
 # app/presenters/application_presenter.rb
