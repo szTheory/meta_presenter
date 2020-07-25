@@ -8,19 +8,19 @@ MetaPresenter is a Ruby gem for writing highly focused and testable Rails view p
 
 ## Installation
 
-#### 1. Add this line to your application's Gemfile:
+### 1. Add this line to your application's Gemfile
 
 ```ruby
 gem 'meta_presenter'
 ```
 
-#### 2. Bundle from the command line:
+### 2. Bundle from the command line
 
 ```sh
-$ bundle
+bundle install
 ```
 
-#### 3. Include MetaPresenter::Helpers in ApplicationController:
+### 3. Include MetaPresenter::Helpers in ApplicationController
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -37,7 +37,7 @@ end
 
 ## Setup
 
-#### 1. Create an ApplicationPresenter
+### 1. Create an ApplicationPresenter
 
 ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page` and `presenter.last_login_at` accessible from all views.
 
@@ -104,7 +104,7 @@ end
 
 Note that presenters mirror the namespace of controllers.
 
-```
+```diagram
 app/
   controllers/
     application_controller.rb
@@ -147,33 +147,46 @@ MetaPresenter supports Ruby >= 2.1 and ActionPack/ActionMailer >= 3.0.12. If you
 
 ## Links
 
-* [Project website](https://metapresenter.com)
-* [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
+- [Project website](https://metapresenter.com)
+- [RDocs for the master branch](https://www.rubydoc.info/github/szTheory/meta-presenter/master)
 
 ## Specs
+
 To run the specs for the currently running Ruby version, run `bundle install` and then `bundle exec rspec`. To run specs for every supported version of ActionPack, run `bundle exec appraisal install` and then `bundle exec appraisal rspec`.
 
 ## Gem release
+
 Make sure the specs pass, bump the version number in meta_presenter.gemspec, build the gem with `gem build meta_presenter.gemspec`. Commit your changes and push to Github, then tag the commit with the current release number using Github's Releases interface (use the format vx.x.x, where x is the semantic version number). You can pull the latest tags to your local repo with `git pull --tags`. Finally, push the gem with `gem push meta_presenter-version-number-here.gem`.
 
 ## TODO High-Priority
-* Add a `rake meta_presenter:install` that generates the scaffolding for you
-* Make sure directions are clear for manually creating presenters
+
+- Add a `rake meta_presenter:install` that generates the scaffolding for you
+- Make sure directions are clear for manually creating presenters
 
 ## TODO
-* create an example app and link to the repo for it in this README
-* proofread the README instructions to make sure everything is correct
-* add support for layout-level presenters
-* add Rails 6 support once it comes out (hopefully just have to add a gemfiles/actionpack6.gemfile and it will run with the Appraisal suite)
+
+- create an example app and link to the repo for it in this README
+- add support for layout-level presenters
 
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b feature/my-new-feature`) or bugfix branch (`git checkout -b bugfix/my-helpful-bugfix`) 
+2. Create your feature branch (`git checkout -b feature/my-new-feature`) or bugfix branch (`git checkout -b bugfix/my-helpful-bugfix`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin feature/my-new-feature`)
 5. Make sure specs are passing (`bundle exec rspec`)
 6. Create new Pull Request
+
+## Running the specs
+
+To run specs against different versions of Rails:
+
+```bash
+bundle exec appraisal install #install dependencies for each ruby version
+bundle exec appraisal rails4 rspec #run rails 4 specs on current Ruby
+bundle exec appraisal rails5 rspec #run rails 5 specs on current Ruby
+bundle exec appraisal rails6 rspec #run rails 6 specs on current Ruby
+```
 
 ## License
 
