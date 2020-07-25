@@ -39,7 +39,7 @@ end
 
 ### 1. Create an ApplicationPresenter
 
-ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page` and `presenter.last_login_at` accessible from all views.
+ApplicationPresenter methods can be used anywhere in the app. This example makes `presenter.page_title` and `presenter.last_login` accessible from all views.
 
 ```ruby
 # app/presenters/application_presenter.rb
@@ -59,13 +59,13 @@ end
 
 #### 2. Create presenters for your controllers
 
-This example makes `presenter.nav_items` available for all actions on `PagesController`:
+This example makes `presenter.tooltip(text)` available for all actions on `PagesController`:
 
 ```ruby
 # app/presenters/pages_presenter.rb
 class PagesPresenter < ApplicationPresenter
   def tooltip(text)
-    content_tag(:p, text, class: 'font-body1')
+    content_tag(:p, text, class: "font-body1")
   end
 end
 ```
@@ -73,7 +73,7 @@ end
 ```Erb
 <!-- app/views/pages/about.html.erb -->
 <h1>About</h1>
-<p data-tipsy-content="<%= presenter.tooltip('Don't Be Evil') %>">Gloogle</p>
+<p data-tipsy-content="<%= presenter.tooltip("Don't Be Evil") %>">Gloogle</p>
 ```
 
 #### 3. Create presenters for specific actions
@@ -88,7 +88,7 @@ class Pages::HomePresenter < PagesPresenter
   delegate_all_to = :current_user
 
   def greeting
-    "Hello, #{current_user.name}"
+    "Hello, #{name}"
   end
 end
 ```
