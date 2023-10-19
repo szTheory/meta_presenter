@@ -183,9 +183,8 @@ To run specs against different versions of Rails:
 
 ```bash
 bundle exec appraisal install #install dependencies for each ruby version
-bundle exec appraisal rails4 rspec #run rails 4 specs on current Ruby
-bundle exec appraisal rails5 rspec #run rails 5 specs on current Ruby
 bundle exec appraisal rails6 rspec #run rails 6 specs on current Ruby
+bundle exec appraisal rails7 rspec #run rails 7 specs on current Ruby
 ```
 
 ## License
