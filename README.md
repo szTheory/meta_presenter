@@ -143,7 +143,7 @@ end
 
 ## Requirements
 
-MetaPresenter supports Ruby >= 2.7.5 and ActionPack/ActionMailer >= 6
+MetaPresenter supports Ruby >= 2.7.5 and ActionPack/ActionMailer >= 6, or >= 7.0.1 for Rails 7 (7.0.0 has a bug)
 
 ## Links
 

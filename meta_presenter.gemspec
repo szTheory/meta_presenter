@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'meta_presenter'
-  s.version       = '1.0.0'
+  s.version       = '1.0.1'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['szTheory']
   s.description   = 'Write highly focused and testable view presenter classes for your Rails controllers and actions'
@@ -15,10 +15,10 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split($/)
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 2.1.0'
+  s.required_ruby_version = '>= 2.7.5'
 
-  s.add_dependency 'actionmailer', '>= 3.0.12'
-  s.add_dependency 'actionpack', '>= 3.0.12'
+  s.add_dependency 'actionmailer', '>= 6', '!= 7.0.0'
+  s.add_dependency 'actionpack', '>= 6', '!= 7.0.0'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'bundler'
