@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    meta_presenter (1.0.1)
+    meta_presenter (2.0.0)
       actionmailer (>= 6, != 7.0.0)
       actionpack (>= 6, != 7.0.0)
 
