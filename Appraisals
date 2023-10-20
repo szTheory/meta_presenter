@@ -4,6 +4,6 @@ appraise 'rails6' do
 end
 
 appraise 'rails7' do
-  gem 'actionpack', '7.0.0'
-  gem 'actionmailer', '7.0.0'
+  gem 'actionpack', '7.0.1'
+  gem 'actionmailer', '7.0.1'
 end

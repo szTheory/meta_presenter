@@ -1,5 +1,4 @@
 require 'meta_presenter/builder'
-require 'active_support/concern'
 require 'active_support/rescuable'
 
 module MetaPresenter
@@ -16,21 +15,23 @@ module MetaPresenter
   # end
   #
   module Helpers
-    extend ActiveSupport::Concern
-    included do
-      # Sets up the `presenter.` method as helper within your views
-      # If you want to customize this for yourself just alias_method it
-      helper_method :presenter
+    def self.included(base)
+      base.instance_eval do
+        # Sets up the `presenter.` method as helper within your views
+        # If you want to customize this for yourself just alias_method it
+        helper_method :presenter
+      end
     end
 
     private
-      # Initialize presenter with the current controller
-      def presenter
-        @presenter ||= begin
-          controller = self
-          klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
-          klass.new(controller)
-        end
+
+    # Initialize presenter with the current controller
+    def presenter
+      @presenter ||= begin
+        controller = self
+        klass = MetaPresenter::Builder.new(controller, action_name).presenter_class
+        klass.new(controller)
       end
+    end
   end
 end
