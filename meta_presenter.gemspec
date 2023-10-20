@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split($/)
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 2.7.5'
+  s.required_ruby_version = '>= 3.0.0'
 
   s.add_dependency 'actionmailer', '>= 6', '!= 7.0.0'
   s.add_dependency 'actionpack', '>= 6', '!= 7.0.0'

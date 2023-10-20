@@ -3,7 +3,6 @@ cache: bundler
 matrix:
   fast_finish: true
 rvm:
-  - 2.7.5
   - 3.0.0
   - 3.1.0
   - 3.2.0
