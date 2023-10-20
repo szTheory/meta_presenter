@@ -7,7 +7,6 @@ gemspec
 group :development, :test do
   gem 'builder'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'coveralls'
   gem 'rb-readline'
   gem 'rspec'
 end

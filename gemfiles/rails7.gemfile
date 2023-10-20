@@ -8,7 +8,6 @@ gem "actionmailer", "7.0.0"
 group :development, :test do
   gem "builder"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "coveralls"
   gem "rb-readline"
   gem "rspec"
 end
