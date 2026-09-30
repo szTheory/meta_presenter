@@ -1,5 +1,8 @@
 [![Gem Version](https://badge.fury.io/rb/meta_presenter.svg)](https://badge.fury.io/rb/meta_presenter) [![Build Status](https://travis-ci.org/szTheory/meta_presenter.svg?branch=master)](https://travis-ci.org/szTheory/meta_presenter) [![Coverage Status](https://coveralls.io/repos/github/szTheory/meta_presenter/badge.svg?branch=master)](https://coveralls.io/github/szTheory/meta_presenter?branch=master) [![Inline docs](https://inch-ci.org/github/szTheory/meta_presenter.svg?branch=master)](https://inch-ci.org/github/szTheory/meta_presenter) [![Maintainability](https://api.codeclimate.com/v1/badges/8698d68a87ec1a9bfacd/maintainability)](https://codeclimate.com/github/szTheory/meta_presenter/maintainability) [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/szTheory/meta_presenter/blob/master/LICENSE.txt) [![Gem](https://img.shields.io/gem/dt/meta_presenter.svg)](https://rubygems.org/gems/meta_presenter) [![GitHub stars](https://img.shields.io/github/stars/szTheory/meta_presenter.svg?label=Stars&style=social)](https://github.com/szTheory/meta_presenter)
 
+> **Archived:** I wrote this gem a long time ago to explore metaprogramming and a cleaner way to separate presentation concerns from bloated helpers that crowd the shared view namespace. I wouldn’t recommend it for new projects today. For ERB templates, I’d use a plain old Ruby object (PORO) instead of metaprogramming.
+
+
 <a href="https://sztheory.github.io/metapresenter.com/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./logo-dark.png">
